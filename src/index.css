@@ -4,23 +4,53 @@
 @tailwind components;
 @tailwind utilities;
 
-@media print{
-  #no-print{
-    display: none;
-  }
-  #print-area{
-    display:block;
-  }
-  body{
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-  }
-}
+@media print {
+    /* Hide header and non-printable elements */
+    header,
+    nav,
+    #no-print,
+    .no-print {
+        display: none !important;
+    }
 
-@page{
-  size: auto;
-  margin: 0mm;
+    /* Show print area */
+    #print-area {
+        display: block !important;
+    }
+
+    /* Reset body styles */
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background: white !important;
+    }
+
+    /* Set A4 size and margins */
+    @page {
+        size: A4 portrait;
+        margin: 0.5cm;
+    }
+
+    /* Style print container */
+    .print-container {
+        width: 21cm !important;
+        min-height: 29.7cm !important;
+        margin: 0 auto !important;
+        background: white !important;
+        box-shadow: none !important;
+    }
+
+    /* Style resume preview */
+    .resume-preview {
+        width: 100% !important;
+        padding: 1cm !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
 }
 
 :root{
