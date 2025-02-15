@@ -16,6 +16,7 @@ const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const router = createBrowserRouter([
   {
     element: <ErrorBoundary><App /></ErrorBoundary>,
+    errorElement: <ErrorBoundary><div>Something went wrong</div></ErrorBoundary>,
     children: [
       {
         path: "/dashboard",
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/resume/:resumeId/edit',
         element: <EditResume/>
+      },
+      {
+        path: '/my-resume/:resumeId/view',
+        element: <ViewResume/>,
+        errorElement: <ErrorBoundary><div>Error loading resume</div></ErrorBoundary>
       }
     ],
   },
@@ -34,10 +40,6 @@ const router = createBrowserRouter([
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
-  },
-  {
-    path: '/my-resume/:resumeId/view',
-    element: <ViewResume/>
   }
 ]);
 
