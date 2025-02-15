@@ -9,12 +9,13 @@ import Dashboard from "./dashboard/Dashboard.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import EditResume from "./dashboard/resume/[resumeId]/edit/EditResume.jsx";
 import ViewResume from "./my-resume/[resumeId]/view/ViewResume.jsx";
+import ErrorBoundary from './components/ErrorBoundary';
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 const router = createBrowserRouter([
   {
-    element: <App />,
+    element: <ErrorBoundary><App /></ErrorBoundary>,
     children: [
       {
         path: "/dashboard",
