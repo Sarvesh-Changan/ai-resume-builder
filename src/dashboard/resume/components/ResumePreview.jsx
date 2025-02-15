@@ -18,23 +18,27 @@ function ResumePreview() {
     }
 
     return (
-        <div className='shadow-lg h-full p-14 border-t-[20px]'
+        <div className='resume-preview shadow-lg p-14 border-t-[20px] print:shadow-none print:border-0'
             style={{
                 borderColor: resumeInfo?.themeColor || '#0D8FCD'
             }}
         >
-            {/* Personal Detail */}
-            {resumeInfo && <PersonalDetailPreview resumeInfo={resumeInfo} />}
-            {/* Summary */}
-            {resumeInfo && <SummaryPreview resumeInfo={resumeInfo} />}
-            {/* Professional Experience */}
-            {resumeInfo && <ExperiencePreview resumeInfo={resumeInfo} />}
-            {/* Educational */}
-            {resumeInfo && <EducationalPreview resumeInfo={resumeInfo} />}
-            {/* Skills */}
-            {resumeInfo && <SkillsPreview resumeInfo={resumeInfo} />}
+            {resumeInfo && (
+                <>
+                    {/* Personal Detail */}
+                    <PersonalDetailPreview resumeInfo={resumeInfo} />
+                    {/* Summary */}
+                    <SummaryPreview resumeInfo={resumeInfo} />
+                    {/* Professional Experience */}
+                    <ExperiencePreview resumeInfo={resumeInfo} />
+                    {/* Educational */}
+                    <EducationalPreview resumeInfo={resumeInfo} />
+                    {/* Skills */}
+                    <SkillsPreview resumeInfo={resumeInfo} />
+                </>
+            )}
         </div>
-    )
+    );
 }
 
-export default ResumePreview
+export default ResumePreview;

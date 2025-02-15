@@ -16,6 +16,31 @@
     padding: 0;
     box-shadow: none;
   }
+  /* Hide everything except the resume */
+  body > *:not(#root),
+  #root > *:not(.print-container) {
+      display: none !important;
+  }
+
+  /* Hide the header and action buttons */
+  header,
+  #no-print,
+  .no-print {
+      display: none !important;
+  }
+
+  /* Reset margins and padding for print */
+  #print-area {
+      margin: 0 !important;
+      padding: 0 !important;
+  }
+
+  /* Ensure the resume takes up the full page */
+  .print-container {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+  }
 }
 
 @page{
