@@ -156,7 +156,7 @@ function Experience() {
             <Button variant="outline" onClick={RemoveExperience} className="text-primary"> - Remove</Button>
 
             </div>
-            <Button disabled={loading} onClick={()=>onSave()}>
+            <Button className='bg-[#9f5bff]' disabled={loading} onClick={()=>onSave()}>
             {loading?<LoaderCircle className='animate-spin' />:'Save'}    
             </Button>
         </div>

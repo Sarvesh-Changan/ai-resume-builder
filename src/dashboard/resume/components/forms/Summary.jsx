@@ -84,7 +84,7 @@ function Summary({ enabledNext }) {
             onChange={(e) => setSummary(e.target.value)}
           />
           <div className="mt-2 flex justify-end">
-            <Button type="submit" disabled={loading}>
+            <Button className='bg-[#9f5bff]' type="submit" disabled={loading}>
               {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
             </Button>
           </div>
