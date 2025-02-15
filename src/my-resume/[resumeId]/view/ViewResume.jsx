@@ -4,7 +4,6 @@ import ResumePreview from '@/dashboard/resume/components/ResumePreview'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import GlobalApi from './../../../../service/GlobalApi'
-import Header from '@/components/ui/custom/Header'
 import { RWebShare } from 'react-web-share'
 
 function ViewResume() {
@@ -76,7 +75,6 @@ function ViewResume() {
     return (
         <ResumeInfoContext.Provider value={{resumeInfo, setResumeInfo}}>
             <div className="min-h-screen">
-                <Header />
                 <div id="no-print">
                     <div className='my-10 mx-10 md:mx-20 lg:mx-36'>
                         <h2 className='text-center text-2xl font-medium'>
