@@ -14,54 +14,72 @@ function ViewResume() {
     const [error, setError] = useState(null);
     const {resumeId} = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
+        console.log('ViewResume mounted, resumeId:', resumeId);
         GetResumeInfo();
-    },[])
+    }, [])
 
-    const GetResumeInfo=()=>{
+    const GetResumeInfo = () => {
+        console.log('Fetching resume info for id:', resumeId);
         setLoading(true);
-        GlobalApi.GetResumeById(resumeId).then(resp=>{
-            console.log(resp.data.data);
-            setResumeInfo(resp.data.data);
-            setLoading(false);
-        }).catch(err => {
-            console.error('Error loading resume:', err);
-            setError('Failed to load resume. Please try again later.');
-            setLoading(false);
-        });
+        GlobalApi.GetResumeById(resumeId)
+            .then(resp => {
+                console.log('API Response:', resp);
+                if (!resp?.data?.data) {
+                    throw new Error('No resume data received');
+                }
+                setResumeInfo(resp.data.data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Error loading resume:', err);
+                setError(err.message || 'Failed to load resume. Please try again later.');
+                setLoading(false);
+            });
     }
 
-    const HandleDownload=()=>{
+    const HandleDownload = () => {
         window.print();
     }
 
+    console.log('Current state:', { loading, error, resumeInfo });
+
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#9f5bff]"></div>
+            <div className="min-h-screen">
+                <Header />
+                <div className="flex items-center justify-center h-[calc(100vh-64px)]">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#9f5bff]"></div>
+                </div>
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-screen">
-                <div className="text-red-500 text-xl mb-4">{error}</div>
-                <Button onClick={GetResumeInfo}>Try Again</Button>
+            <div className="min-h-screen">
+                <Header />
+                <div className="flex flex-col items-center justify-center h-[calc(100vh-64px)]">
+                    <div className="text-red-500 text-xl mb-4">{error}</div>
+                    <Button onClick={GetResumeInfo}>Try Again</Button>
+                </div>
             </div>
         );
     }
 
     if (!resumeInfo) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-xl">Resume not found</div>
+            <div className="min-h-screen">
+                <Header />
+                <div className="flex items-center justify-center h-[calc(100vh-64px)]">
+                    <div className="text-xl">Resume not found</div>
+                </div>
             </div>
         );
     }
 
     return (
-        <ResumeInfoContext.Provider value={{resumeInfo,setResumeInfo}} >
+        <ResumeInfoContext.Provider value={{resumeInfo, setResumeInfo}} >
             <div id="no-print">
             <Header/>
 
