@@ -11,7 +11,9 @@ function App() {
   }
   return (
     <>
-      <Header />
+      <div className="no-print">
+        <Header />
+      </div>
       <Outlet />
       <Toaster/>
     </>
