@@ -5,12 +5,20 @@
 @tailwind utilities;
 
 @media print {
-    /* Hide header and non-printable elements */
-    header,
+    /* Hide header and navigation */
+    .navbar,
     nav,
+    header,
+    .header,
+    [role="banner"],
+    #header,
+    .Header_header__container__3qfEV,
+    div[class*="Header_header"],
     #no-print,
     .no-print {
         display: none !important;
+        height: 0 !important;
+        visibility: hidden !important;
     }
 
     /* Show print area */
@@ -41,6 +49,7 @@
         margin: 0 auto !important;
         background: white !important;
         box-shadow: none !important;
+        padding-top: 0 !important;
     }
 
     /* Style resume preview */
@@ -50,6 +59,12 @@
         margin: 0 !important;
         border: none !important;
         box-shadow: none !important;
+    }
+
+    /* Hide any fixed positioned elements */
+    *[style*="position: fixed"],
+    *[style*="position:fixed"] {
+        display: none !important;
     }
 }
 
