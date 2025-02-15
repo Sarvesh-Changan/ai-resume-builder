@@ -48,36 +48,27 @@ function ViewResume() {
 
     if (loading) {
         return (
-            <div className="min-h-screen">
-                <Header />
-                <div className="flex items-center justify-center h-[calc(100vh-64px)]">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#9f5bff]"></div>
-                </div>
+            <div className="flex items-center justify-center h-[calc(100vh-64px)]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#9f5bff]"></div>
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="min-h-screen">
-                <Header />
-                <div className="flex flex-col items-center justify-center h-[calc(100vh-64px)]">
-                    <div className="text-red-500 text-xl mb-4">{error}</div>
-                    <Button onClick={GetResumeInfo} className="bg-[#9f5bff] hover:bg-[#8347d4]">
-                        Try Again
-                    </Button>
-                </div>
+            <div className="flex flex-col items-center justify-center h-[calc(100vh-64px)]">
+                <div className="text-red-500 text-xl mb-4">{error}</div>
+                <Button onClick={GetResumeInfo} className="bg-[#9f5bff] hover:bg-[#8347d4]">
+                    Try Again
+                </Button>
             </div>
         );
     }
 
     if (!resumeInfo) {
         return (
-            <div className="min-h-screen">
-                <Header />
-                <div className="flex items-center justify-center h-[calc(100vh-64px)]">
-                    <div className="text-xl">Resume not found</div>
-                </div>
+            <div className="flex items-center justify-center h-[calc(100vh-64px)]">
+                <div className="text-xl">Resume not found</div>
             </div>
         );
     }
@@ -85,8 +76,8 @@ function ViewResume() {
     return (
         <ResumeInfoContext.Provider value={{resumeInfo, setResumeInfo}}>
             <div className="min-h-screen">
+                <Header />
                 <div id="no-print">
-                    <Header/>
                     <div className='my-10 mx-10 md:mx-20 lg:mx-36'>
                         <h2 className='text-center text-2xl font-medium'>
                             Congrats! Your Ultimate AI generates Resume is ready!
