@@ -95,10 +95,8 @@ function ViewResume() {
                 </div>
 
                 {/* Print section */}
-                <div className="print-container">
-                    <div id="print-area" className='my-10 mx-10 md:mx-20 lg:mx-36'>
-                        <ResumePreview />
-                    </div>
+                <div id="print-area" className="print-container">
+                    <ResumePreview />
                 </div>
             </div>
         </ResumeInfoContext.Provider>

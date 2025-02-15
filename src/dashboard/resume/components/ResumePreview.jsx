@@ -18,7 +18,8 @@ function ResumePreview() {
     }
 
     return (
-        <div className='resume-preview shadow-lg p-14 border-t-[20px] print:shadow-none print:border-0'
+        <div 
+            className='resume-preview p-8 md:p-14 border-t-[20px] mx-auto max-w-4xl bg-white'
             style={{
                 borderColor: resumeInfo?.themeColor || '#0D8FCD'
             }}

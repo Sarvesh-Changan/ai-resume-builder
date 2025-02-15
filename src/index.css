@@ -4,48 +4,53 @@
 @tailwind components;
 @tailwind utilities;
 
-@media print{
-  #no-print{
-    display: none;
-  }
-  #print-area{
-    display:block;
-  }
-  body{
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-  }
-  /* Hide everything except the resume */
-  body > *:not(#root),
-  #root > *:not(.print-container) {
-      display: none !important;
-  }
+@media print {
+    /* Hide non-printable elements */
+    .no-print,
+    #no-print,
+    header {
+        display: none !important;
+    }
 
-  /* Hide the header and action buttons */
-  header,
-  #no-print,
-  .no-print {
-      display: none !important;
-  }
+    /* Reset page margins */
+    @page {
+        margin: 0;
+        size: auto;
+    }
 
-  /* Reset margins and padding for print */
-  #print-area {
-      margin: 0 !important;
-      padding: 0 !important;
-  }
+    /* Style the print container */
+    .print-container {
+        margin: 0 !important;
+        padding: 20px !important;
+        width: 100% !important;
+    }
 
-  /* Ensure the resume takes up the full page */
-  .print-container {
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-  }
-}
+    /* Ensure resume preview is visible */
+    .resume-preview {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
 
-@page{
-  size: auto;
-  margin: 0mm;
+    /* Remove any background colors or images */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Ensure text is visible */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Remove unnecessary margins from print area */
+    #print-area {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 }
 
 :root{
